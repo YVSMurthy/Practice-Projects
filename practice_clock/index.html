@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clock</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-MKapQG4p0tBw9d70O1bwD2qw1xvDtrW/VyfmfzqsQnRdmVuZ0kivPBkq9evso0Yl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+  </head>
+
+  <style>
+    .container {
+      background-color: rgb(225, 245, 248);
+      text-align: center;
+      margin-top: 50px;
+      padding-left: 30px;
+      padding-right: 30px;
+      width: 700px;
+      height: 430px;
+      margin-bottom: 30px;
+      padding-top: 25px;
+      border-radius: 15px;
+    }
+  </style>
+
+  <script>
+    setInterval(() => {
+  
+      a = new Date();
+      var min = a.getMinutes();
+      if (min/10 < 1) {
+        min = "0" + min;
+      }
+      var time = a.getHours() + " : " + min + " : " + a.getSeconds()
+
+      // Create a new Date object
+      var date = new Date();
+
+      // Define the options for the date formatting
+      var options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+
+      // Format the date using the options
+      var date = date.toLocaleString('en-US', options);
+
+      document.getElementById("date_time").innerHTML = time + " on " + date;
+
+      var tz = a.getTimezoneOffset();
+      var hr_off = Math.floor(Math.abs(tz) / 60);
+      var min_off = Math.abs(tz) % 60;
+      var sign = (tz >= 0) ? "-" : "+";
+
+      document.getElementById("timezone").innerHTML = "G.M.T.  " + sign + " " + hr_off + " : " + min_off + " Hours";
+
+    }, 1000);
+
+
+  </script>
+
+  <body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+
+              <ul class="dropdown-menu" dta-bs-popper = "static">
+                <li><a class="dropdown-item" href="#">Option1</a></li>
+                <li><a class="dropdown-item" href="#">Option 2</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Option 3</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link disabled">Disabled</a>
+            </li>
+          </ul>
+
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="display-4">Clock</h1>
+        <br/>
+        <p class="lead">This is used to display the date & time in your current time zone</p>
+        <br/>
+        <p class = "lead" style="text-align: left; padding-left: 50px;"> Time Zone : <span id = "timezone">Detecting Your Time Zone</span> </p>
+        <p class = "lead" style="text-align: left; padding-left: 50px;"> The time is  <span id="date_time"> </span> </p>
+        <hr class="my-4">
+        <p>Click below to view more time zones.</p>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Browse Time Zones</a>
+      </div>
+    </div>
+
+  </body>
+</html>

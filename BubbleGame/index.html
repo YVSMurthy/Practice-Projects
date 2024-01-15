@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main">
+        <div id="playArea">
+            <div id="header">
+                <div class="headerItems">
+                    <h1>Hit</h1>
+                    <div class="values"> <h2 id="hitVal"> 0 </h2> </div>
+                </div>
+                <div class="headerItems">
+                    <h1>Time</h1>
+                    <div class="values"> <h2 id="timer"> 5 </h2> </div>
+                </div>
+                <div class="headerItems">
+                    <h1>Score</h1>
+                    <div class="values"> <h2 id="score"> 0 </h2> </div>
+                </div>
+            </div>
+            <div id="bubbleArea">
+                <div id="startUp">
+                    <h1>Bubble game</h1>
+                    <p>You get 5 seconds to click on the number displayed on Hit</p>
+                    <p>Let's see how high can you score !!!</p>
+                    <p style="margin-top: 10px">Correct click + 10 incorrect click - 5 in the score</p>
+                    <button id="play" onclick="startUp()">Play</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
